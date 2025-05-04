@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="2.0">
+
+<!-- Basic greetings (now case-insensitive) -->
+<category>
+    <pattern>HI</pattern>
+    <pattern>HELLO</pattern>
+    <pattern>HEY</pattern>
+    <pattern>hi</pattern>
+    <pattern>hello</pattern>
+    <pattern>hey</pattern>
+    <template>
+        Hello! Welcome to our cosmetic online store. How can I help you today?
+        You can ask about products, brands, makeup tips, or your order status.
+    </template>
+</category>
+
+<category>
+    <pattern>WHAT CAN YOU DO</pattern>
+    <pattern>HELP</pattern>
+    <pattern>help</pattern>
+    <template>
+        I can help you with:
+        - Finding cosmetic products
+        - Recommending products for your skin type
+        - Providing makeup tips
+        - Checking order status
+        - Answering questions about brands
+        - Explaining product ingredients
+        What would you like help with?
+    </template>
+</category>
+
+<!-- Product categories -->
+<category>
+    <pattern>WHAT PRODUCTS DO YOU HAVE</pattern>
+    <pattern>WHAT DO YOU SELL</pattern>
+    <pattern>what products do you have</pattern>
+    <template>
+        We offer a wide range of cosmetic products including:
+        - Skincare (cleansers, moisturizers, serums)
+        - Makeup (foundation, lipstick, eyeshadow)
+        - Haircare (shampoo, conditioner, treatments)
+        - Fragrances (perfumes, body mists)
+        - Nail care (polish, treatments)
+        Are you looking for something specific?
+    </template>
+</category>
+
+<!-- Skincare products -->
+<category>
+    <pattern>I NEED SKINCARE PRODUCTS</pattern>
+    <pattern>RECOMMEND SKINCARE</pattern>
+    <pattern>WHAT SKINCARE DO YOU HAVE</pattern>
+    <pattern>i need skincare products</pattern>
+    <template>
+        We have these skincare categories:
+        - Cleansers (foaming, oil, micellar water)
+        - Moisturizers (for dry, oily, combination skin)
+        - Serums (vitamin C, hyaluronic acid, retinol)
+        - Face masks (clay, sheet, overnight)
+        - Sunscreen (mineral, chemical, SPF 30-50)
+        What's your skin type or concern?
+    </template>
+</category>
+
+<!-- Skin type responses -->
+<category>
+    <pattern>MY SKIN IS DRY</pattern>
+    <pattern>I HAVE DRY SKIN</pattern>
+    <pattern>my skin is dry</pattern>
+    <pattern>i have dry skin</pattern>
+    <template>
+        For dry skin, I recommend:
+        - Hydrating cleansers (cream or oil-based)
+        - Rich moisturizers with hyaluronic acid
+        - Overnight hydrating masks
+        - Facial oils like rosehip or jojoba
+        Would you like specific product recommendations?
+    </template>
+</category>
+
+<category>
+    <pattern>MY SKIN IS OILY</pattern>
+    <pattern>I HAVE OILY SKIN</pattern>
+    <pattern>my skin is oily</pattern>
+    <template>
+        For oily skin, I recommend:
+        - Gel or foaming cleansers
+        - Oil-free moisturizers
+        - Clay masks to absorb excess oil
+        - Products with salicylic acid
+        - Matte finish sunscreens
+        Would you like specific product recommendations?
+    </template>
+</category>
+
+<!-- Makeup products -->
+<category>
+    <pattern>I NEED MAKEUP</pattern>
+    <pattern>WHAT MAKEUP DO YOU HAVE</pattern>
+    <pattern>i need makeup</pattern>
+    <template>
+        Our makeup collection includes:
+        - Foundation (liquid, powder, stick)
+        - Concealer
+        - Lipstick (matte, gloss, liquid)
+        - Eyeshadow (palettes, singles)
+        - Mascara
+        - Blush and bronzer
+        What type of makeup are you looking for?
+    </template>
+</category>
+
+<!-- Foundation questions -->
+<category>
+    <pattern>I NEED FOUNDATION</pattern>
+    <pattern>RECOMMEND FOUNDATION</pattern>
+    <pattern>i need foundation</pattern>
+    <template>
+        We offer foundations for all skin types:
+        - For dry skin: Hydrating liquid foundations
+        - For oily skin: Matte or powder foundations
+        - For combination skin: Balancing formulas
+        - Full coverage or sheer options available
+        Do you know your shade or need help matching?
+    </template>
+</category>
+
+<category>
+    <pattern>HOW TO FIND MY FOUNDATION SHADE</pattern>
+    <pattern>HELP WITH FOUNDATION SHADE</pattern>
+    <pattern>how to find my foundation shade</pattern>
+    <template>
+        To find your perfect foundation shade:
+        1. Determine your undertone (cool, warm, neutral)
+        2. Match to your jawline in natural light
+        3. Consider your skin type (dry, oily, combination)
+        4. We offer sample sizes to test at home
+        Would you like to see our shade range?
+    </template>
+</category>
+
+<!-- Lipstick questions -->
+<category>
+    <pattern>I NEED LIPSTICK</pattern>
+    <pattern>WHAT LIPSTICK COLORS DO YOU HAVE</pattern>
+    <pattern>i need lipstick</pattern>
+    <template>
+        We have lipsticks in:
+        - Nudes (light to deep)
+        - Pinks (baby pink to fuchsia)
+        - Reds (classic to burgundy)
+        - Berries and plums
+        - Browns and mauves
+        What finish would you prefer? Matte, gloss, or satin?
+    </template>
+</category>
+
+<!-- Brand questions -->
+<category>
+    <pattern>WHAT BRANDS DO YOU CARRY</pattern>
+    <pattern>DO YOU HAVE * BRAND</pattern>
+    <pattern>what brands do you carry</pattern>
+    <template>
+        We carry premium cosmetic brands including:
+        - High-end: MAC, NARS, Estée Lauder
+        - Clean beauty: RMS, Ilia, Kosas
+        - Drugstore favorites: Maybelline, L'Oréal
+        - Skincare specialists: The Ordinary, CeraVe
+        Were you looking for a specific brand?
+        <think><set name="mentioned_brand"><star/></set></think>
+    </template>
+</category>
+
+<category>
+    <pattern>YES I WAS LOOKING FOR *</pattern>
+    <pattern>yes i was looking for *</pattern>
+    <template>
+        <srai>DO YOU HAVE <get name="mentioned_brand"/></srai>
+    </template>
+</category>
+
+<!-- Product ingredients -->
+<category>
+    <pattern>WHAT IS IN *</pattern>
+    <pattern>INGREDIENTS IN *</pattern>
+    <pattern>what is in *</pattern>
+    <template>
+        <think><set name="product"><star/></set></think>
+        You can find the full ingredients list for <get name="product"/> on its product page.
+        Would you like me to check if it contains any specific ingredient you're concerned about?
+    </template>
+</category>
+
+<category>
+    <pattern>DOES * CONTAIN *</pattern>
+    <pattern>does * contain *</pattern>
+    <template>
+        <think>
+            <set name="product"><star index="1"/></set>
+            <set name="ingredient"><star index="2"/></set>
+        </think>
+        Let me check if <get name="product"/> contains <get name="ingredient"/>...
+        <condition name="ingredient">
+            <li value="PARABENS">Our <get name="product"/> is paraben-free.</li>
+            <li value="SULFATES">Our <get name="product"/> is sulfate-free.</li>
+            <li value="FRAGRANCE">Our <get name="product"/> contains natural fragrance only.</li>
+            <li>I recommend checking the full ingredients list on the product page to be sure about <get name="ingredient"/>.</li>
+        </condition>
+    </template>
+</category>
+
+<!-- Order status -->
+<category>
+    <pattern>WHERE IS MY ORDER</pattern>
+    <pattern>ORDER STATUS</pattern>
+    <pattern>where is my order</pattern>
+    <template>
+        To check your order status, I'll need your order number.
+        Please provide it and I can look up the current status for you.
+    </template>
+</category>
+
+<category>
+    <pattern>MY ORDER NUMBER IS *</pattern>
+    <pattern>my order number is *</pattern>
+    <template>
+        <think><set name="order_number"><star/></set></think>
+        Thank you! Checking status for order <get name="order_number"/>...
+        Typically orders ship within 1-2 business days and arrive in 3-5 business days.
+        Would you like me to send tracking information to your email?
+    </template>
+</category>
+
+<!-- Returns and exchanges -->
+<category>
+    <pattern>HOW TO RETURN</pattern>
+    <pattern>RETURN POLICY</pattern>
+    <pattern>how to return</pattern>
+    <template>
+        Our return policy:
+        - Unused products can be returned within 30 days
+        - Free returns for store credit
+        - Refunds to original payment method minus shipping
+        - Start your return at our Returns Center online
+        Need help with a specific return?
+    </template>
+</category>
+
+<!-- Makeup tips -->
+<category>
+    <pattern>HOW TO APPLY *</pattern>
+    <pattern>how to apply *</pattern>
+    <template>
+        <think><set name="product"><star/></set></think>
+        Application tips for <get name="product"/>:
+        <condition name="product">
+            <li value="FOUNDATION">Start with clean, moisturized skin. Apply with brush, sponge, or fingers, blending outward.</li>
+            <li value="CONCEALER">Apply after foundation. Dot under eyes and on blemishes, then blend gently.</li>
+            <li value="EYESHADOW">Use primer first. Apply light shade on lid, medium in crease, dark on outer corner.</li>
+            <li value="LIPSTICK">Exfoliate lips first. Line with matching lip liner, then fill in with lipstick.</li>
+            <li>I recommend checking our tutorial videos for detailed <get name="product"/> application techniques.</li>
+        </condition>
+    </template>
+</category>
+
+<!-- Improved fallback responses -->
+<category>
+    <pattern>_</pattern>
+    <template>
+        <random>
+            <li>I'm not sure I understood. Could you rephrase your question about cosmetics?</li>
+            <li>I didn't catch that. Could you ask about our products, brands, or makeup tips?</li>
+            <li>Sorry, I'm still learning! Try asking about our makeup or skincare products.</li>
+        </random>
+    </template>
+</category>
+
+<!-- Wildcard catch-all -->
+<category>
+    <pattern>*</pattern>
+    <template>
+        <srai>_</srai>
+    </template>
+</category>
+
+<!-- Goodbye -->
+<category>
+    <pattern>BYE</pattern>
+    <pattern>GOODBYE</pattern>
+    <pattern>bye</pattern>
+    <pattern>goodbye</pattern>
+    <template>
+        Thank you for visiting our cosmetic store! Come back anytime for beauty advice or shopping.
+        Have a beautiful day!
+    </template>
+</category>
+
+<category>
+    <pattern>hello</pattern>
+    <template>Hello! Welcome to our cosmetic online store. How can I help you today?
+        You can ask about products, brands, makeup tips, or your order status💓</template>
+</category>
+</aiml>
